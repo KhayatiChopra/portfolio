@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Khyati Chopra - Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  /* Background Gradient */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f9c5d1, #f6edf7 60%, #dccce4);
+    color: #4a2c52;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  header {
+    height: 350px;
+    background: linear-gradient(135deg, #fbc1cc, #e3d8f7);
+    box-shadow: 0 6px 30px rgba(204, 153, 187, 0.3);
+    border-bottom-left-radius: 80px 50px;
+    border-bottom-right-radius: 80px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  header h1 {
+    font-size: 3.8rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #6b3a65;
+    text-shadow: 1px 1px 2px rgba(255 255 255 / 0.8);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 1s forwards;
+    animation-delay: 0.2s;
+  }
+
+  header p {
+    font-size: 1.6rem;
+    margin-top: 0.6em;
+    font-style: italic;
+    color: #8c5d89;
+    text-shadow: 1px 1px 2px rgba(255 255 255 / 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 1s forwards;
+    animation-delay: 0.5s;
+  }
+
+  /* Cartoon girl fixed with floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0); }
+    50% { transform: translateY(-18px) scale(1.1) rotate(-7deg); }
+  }
+
+  .cartoon-girl {
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    width: 160px;
+    cursor: default;
+    filter: drop-shadow(0 6px 10px rgba(107, 58, 101, 0.35));
+    border-radius: 50%;
+    background: #fbe8ef;
+    padding: 8px;
+    box-shadow: 0 5px 15px rgba(107,58,101,0.25);
+    animation: float 6s ease-in-out infinite;
+    z-index: 9999;
+  }
+
+  /* Main container */
+  main {
+    max-width: 850px;
+    margin: -80px auto 2rem;
+    background: rgba(255 255 255 / 0.48);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-radius: 32px;
+    box-shadow: 0 12px 36px rgba(107, 58, 101, 0.22);
+    padding: 3rem 3.5rem;
+    position: relative;
+    z-index: 10;
+    color: #4a2c52;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  section h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .tile {
+    background: #fce8f2;
+    border-radius: 18px;
+    padding: 2rem 2.2rem;
+    box-shadow: 0 8px 20px rgba(204, 153, 187, 0.25);
+    color: #6b3a65;
+    font-weight: 500;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .tile.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tile:hover {
+    background-color: #fad7ed;
+    transform: translateY(-8px);
+    box-shadow: 0 14px 40px rgba(204, 153, 187, 0.40);
+  }
+
+  .tile h3 {
+    margin-top: 0;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .tile p {
+    margin-top: 0.3rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+
+  .skills-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .skill-card {
+    background: #d8b5d9;
+    color: #59305d;
+    padding: 1.6rem 2.2rem;
+    border-radius: 26px;
+    box-shadow: 0 8px 30px rgba(189, 151, 191, 0.6);
+    flex: 1 1 180px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    user-select: none;
+  }
+
+  .skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .skill-card:hover {
+    background: #c69ac9;
+    box-shadow: 0 12px 40px rgba(189, 151, 191, 0.8);
+  }
+
+  footer {
+    text-align: center;
+    color: #7f4b82;
+    font-weight: 600;
+    margin: 3rem 0 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Khyati Chopra</h1>
+  <p>Software Engineer & Front-End Developer</p>
+</header>
+
+<!-- Cartoon Girl -->
+<svg class="cartoon-girl" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-label="Cartoon Girl" role="img">
+  <circle fill="#ffd9d9" stroke="#6b3a65" stroke-width="2" cx="50" cy="50" r="40"/>
+  <path fill="#a467b8" stroke="#7b3a96" stroke-width="2" d="M10,50 Q50,10 90,50 Q80,80 50,70 Q20,80 10,50 Z"/>
+  <ellipse fill="white" stroke="#6b3a65" stroke-width="1.5" cx="30" cy="50" rx="12" ry="18" />
+  <ellipse fill="white" stroke="#6b3a65" stroke-width="1.5" cx="70" cy="50" rx="12" ry="18" />
+  <circle fill="#6b3a65" cx="30" cy="52" r="7" />
+  <circle fill="#6b3a65" cx="70" cy="52" r="7" />
+</svg>
+
+<main>
+  <section id="experience-section">
+    <h2>Experience</h2>
+    <div class="tiles">
+      <div class="tile">
+        <h3>Front-End Developer — BrightTech Solutions</h3>
+        <p><strong>June 2023 – Present</strong></p>
+        <p>Craft stunning, responsive UIs with React, improving UX & client engagement.</p>
+      </div>
+
+      <div class="tile">
+        <h3>Software Engineer Intern — CodeCrafters Inc.</h3>
+        <p><strong>Jan 2023 – May 2023</strong></p>
+        <p>Collaborated on scalable backend services, code reviews, and performance enhancements.</p>
+      </div>
+
+      <div class="tile">
+        <h3>Junior Web Developer — PixlWorks Studio</h3>
+        <p><strong>Aug 2022 – Dec 2022</strong></p>
+        <p>Maintained and built client websites with HTML/CSS/JS, liaising with designers and PMs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills-section">
+    <h2>Skills</h2>
+    <div class="skills-cards">
+      <div class="skill-card">HTML5 & CSS3</div>
+      <div class="skill-card">JavaScript & ES6+</div>
+      <div class="skill-card">React.js</div>
+      <div class="skill-card">Responsive Design</div>
+      <div class="skill-card">Git & GitHub</div>
+      <div class="skill-card">UI/UX Design</div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Khyati Chopra. All rights reserved.</footer>
+
+<script>
+  // Animate sections on scroll
+  function animateOnScroll() {
+    const sections = [
+      { id: 'experience-section', heading: true, items: true },
+      { id: 'skills-section', heading: true, items: true }
+    ];
+
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    sections.forEach(section => {
+      const elem = document.getElementById(section.id);
+      const rect = elem.getBoundingClientRect();
+      if (rect.top < windowHeight - 150) {
+        // Animate heading
+        if (section.heading) {
+          const heading = elem.querySelector('h2');
+          heading.classList.add('visible');
+        }
+        // Animate tiles or skill cards
+        if (section.items) {
+          const items = elem.querySelectorAll('.tile, .skill-card');
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, index * 150);
+          });
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', animateOnScroll);
+  window.addEventListener('load', animateOnScroll);
+</script>
+
+</body>
+</html>
